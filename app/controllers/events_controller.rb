@@ -13,6 +13,7 @@ class EventsController < ApplicationController
 
   def create
     user = User.find(current_user.id)
+    user.events
     @event = user.events.build(event_params)
 
     if @event.save
