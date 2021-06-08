@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   
-  before_action authenticate_user, only: [:create, :new]
+  before_action :authenticate_user!, only: [:create, :new]
 
   def new
     @event = Event.new
@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    user = current_user
+    user = User.find(current_user.id)
     @event = user.build(event_params)
 
     if @event.save
