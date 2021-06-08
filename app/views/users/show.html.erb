@@ -1,11 +1,24 @@
-<h1>Users#show</h1>
-
-<div>
-  <%= @user.name %>
-  <%= @user.email %>
-  <% @user.attending_events.each do |e| %>
-  <%= e.name %>
-  <%= e.date %>
-  <% end %>
+<div class="container">
+    <h4><strong>Name: </strong><%= @user.name %></h4>
+    <h4><strong>Email: </strong><%= @user.email %></h4>
+    <h3>Attended Events</h3>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @user.event_attendees.each_with_index do |e, index| %>
+            <tr>
+                <td><%= e.event.name %></td>
+                <td><%= e.event.date %></td>
+                <td><%= e.event.date > DateTime.now ? "Upcoming" : "Past" %></td>
+            </tr>
+            <%end%>
+        </tbody>
+    </table>
 </div>
-

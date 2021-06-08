@@ -8,6 +8,8 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all.order("created_at DESC")
+    @upcoming = Event.upcoming
+    @past = Event.past
   end
 
   def create
