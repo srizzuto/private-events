@@ -1,0 +1,11 @@
+<h1>Name of attendees</h1>
+
+<div>
+  <%= @event.name %>
+  <%= @event.date %>
+  <% @event.attendees.each do |a| %>
+    <%= a.name %>
+  <% end %>
+</div>
+
+<%= link_to "Back", root_path %>

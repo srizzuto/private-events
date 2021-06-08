@@ -1,9 +1,11 @@
 <h1>Events</h1>
 <% @events.each do |event| %>
+<%=link_to event_path(event) do %>
 <div>
     <h1><%= event.name %></h1>
     <span><%= event.date %></span>
 </div>
+<%end%>
 <%end %>
 <%= link_to "New User", new_user_registration_path %>
 <%= link_to "New Event", new_event_path %>
