@@ -1,13 +1,12 @@
 class EventsController < ApplicationController
-  
-  before_action :authenticate_user!, only: [:create, :new]
+  before_action :authenticate_user!, only: %i[create new]
 
   def new
     @event = Event.new
   end
 
   def index
-    @events = Event.all.order("created_at DESC")
+    @events = Event.all.order('created_at DESC')
     @upcoming = Event.upcoming
     @past = Event.past
   end
@@ -28,6 +27,7 @@ class EventsController < ApplicationController
   end
 
   private
+
   def event_params
     params.require(:event).permit(:name, :date)
   end
