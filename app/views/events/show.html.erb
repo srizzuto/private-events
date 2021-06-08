@@ -21,7 +21,7 @@
                     <tbody>
                         <% @event.event_attendees.each do |a| %>
                         <tr>
-                            <td><%= a.attendee.name %></td>
+                            <td><%=link_to  a.attendee.name, user_path(a.attendee) %></td>
                             <td><%= a.attendee.email %></td>
                         </tr>
                         <% end %>
